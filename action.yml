@@ -26,7 +26,7 @@ runs:
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
-    - run: ${{ github.action_path }}/crowdin.sh ${{ inputs.crowdin-token }} ${{ input.crowdin-project-id }} ${{ input.crowdin-file }}
+    - run: ${{ github.action_path }}/crowdin.sh ${{ inputs.crowdin-token }} ${{ inputs.crowdin-project-id }} ${{ inputs.crowdin-file }}
       shell: bash
     - run: ${{ github.action_path }}/goodbye.sh
       shell: bash
