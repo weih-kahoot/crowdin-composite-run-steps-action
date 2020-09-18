@@ -19,7 +19,7 @@ storage_id=$(curl --request POST \
 echo "Upload file as $storage_id"
 
 curl --request PUT \
-  --url "https://crowdin.com/api/v2/projects/${project_id}/files/${file_id}"
+  --url "https://crowdin.com/api/v2/projects/${project_id}/files/${file_id}" \
   --header "authorization: Bearer $token" \
   --header 'content-type: application/json' \
   --data "{\"storageId\": $storage_id}"
