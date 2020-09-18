@@ -1,6 +1,18 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'Crowdin sync'
+description: 'Crowdin!!'
 inputs:
+  crowdin-token:
+    description: 'Crowdin token'
+    required: true
+  crowdin-project-id:
+    description: 'Crowdin project id'
+    required: true
+  crowdin-file:
+    description: 'Crowdin file to track'
+    required: true
+  crowdin-file-content:
+    description: 'Crowdin file to track'
+    required: true
   who-to-greet:  # id of input
     description: 'Who to greet'
     required: true
@@ -16,6 +28,8 @@ runs:
       shell: bash
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
+      shell: bash
+    - run: ${{ github.action_path }}/crowdin.sh ${{ input.crowdin-token }}
       shell: bash
     - run: ${{ github.action_path }}/goodbye.sh
       shell: bash
