@@ -10,9 +10,6 @@ inputs:
   crowdin-file:
     description: 'Crowdin file to track'
     required: true
-  crowdin-file-content:
-    description: 'Crowdin file to track'
-    required: true
   who-to-greet:  # id of input
     description: 'Who to greet'
     required: true
@@ -29,7 +26,7 @@ runs:
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
-    - run: ${{ github.action_path }}/crowdin.sh ${{ inputs.crowdin-token }}
+    - run: ${{ github.action_path }}/crowdin.sh ${{ inputs.crowdin-token }} ${{ input.crowdin-project-id }} ${{ input.crowdin-file }}
       shell: bash
     - run: ${{ github.action_path }}/goodbye.sh
       shell: bash

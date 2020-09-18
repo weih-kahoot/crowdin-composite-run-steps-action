@@ -1,7 +1,20 @@
 token=$1
+project_id=$2
+file=$3
 
-echo "The token is $token"
+echo "Crowdin.sh"
 
-ls
+echo "Upload file $file"
 
-date
+curl --request POST \
+  --url https://crowdin.com/api/v2/storages \
+  --header "authorization: Bearer $token" \
+  --header 'content-type: application/octet-stream' \
+  --header "crowdin-api-filename: $file" \
+  --data @$file
+
+# ls
+
+# date
+
+
